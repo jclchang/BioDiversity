@@ -1,27 +1,23 @@
 function buildMetadata(sample) {
 
-  // @TODO: Complete the following function that builds the metadata panel
-
-  // Use `d3.json` to fetch the metadata for a sample
-    // Use d3 to select the panel with id of `#sample-metadata`
-
-    // Use `.html("") to clear any existing metadata
-
-    // Use `Object.entries` to add each key and value pair to the panel
-    // Hint: Inside the loop, you will need to use d3 to append new
-    // tags for each key-value in the metadata.
-
-	//console.log(`test: ${sample}`); 
+ 	//console.log(`test: ${sample}`); 
 	
 	var url = (`/metadata/${sample}`);
 	//console.log(`url:  ${url}`);
 
+	// Use d3 to select the panel with id of `#sample-metadata`
 	var panel = d3.select("#sample-metadata");
+	
+	// Use d3 to select the panel with id of `#sample-metadata`
 	panel.html("");
+	
+	// Use `d3.json` to fetch the metadata for a sample
+    // Use d3 to select the panel with id of `#sample-metadata`
 	d3.json(url).then(function(response) {
 		//console.log(response);
 		
-		 Object.entries(response).forEach(function([key, value]) {
+	    // Use `Object.entries` to add each key and value pair to the panel
+		Object.entries(response).forEach(function([key, value]) {
 			//console.log(key, value);
 			var p1 = d3.select("#sample-metadata").append("p").text(`${key}: ${value}`);
 		 
@@ -58,9 +54,10 @@ function buildCharts(sample) {
 		top_labels = response.otu_ids.slice(0, 10);
 		top_values = response.sample_values.slice(0, 10);
 		top_text = response.otu_labels.slice(0, 10);
-		console.log(top_labels);
-		console.log(top_values);
+		//console.log(top_labels);
+		//console.log(top_values);
 		
+	//Build a Pie Chart with top 10 samples
 	var data = [{
 		"labels": top_labels,
         "values": top_values,

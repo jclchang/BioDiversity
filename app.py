@@ -90,7 +90,8 @@ def samples(sample):
     # Filter the data based on the sample number and
     # only keep rows with values above 1
     sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]
-    #print (type(sample_data))    # sample_data is a dataframe
+    
+	#print (type(sample_data))    # sample_data is a dataframe
     print (sample_data.head())
 	
     # sort by descending order before converting to lists	
@@ -104,8 +105,7 @@ def samples(sample):
         "otu_labels": newSampleSorted_df.otu_label.tolist(),
     }
     return jsonify(data)
-    #return jsonify(data1)
-	
+    
 
 
 if __name__ == "__main__":
